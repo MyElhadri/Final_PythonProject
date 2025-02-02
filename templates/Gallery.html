@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Art Gallery{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Gallery.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="outer-image-container">
+  <div class="image-container">
+    <div class="image-section">
+      <div class="gallery-header">
+        <h1>Art Gallery</h1>
+        <div class="gallery-controls">
+          <select id="sortSelect" class="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        {% for artwork in artworks %}
+        <div class="artwork-card" data-created="{{ artwork.created_at }}">
+          <img src="{{ artwork.path }}" alt="Artwork" class="artwork-image">
+          <div class="artwork-info">
+            <span class="artwork-date">{{ artwork.created_at }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour affichage agrandi -->
+<div id="imageModal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img id="modalImage" class="modal-content">
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/Gallery.js') }}"></script>
+{% endblock %}

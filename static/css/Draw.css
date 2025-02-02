@@ -1,0 +1,174 @@
+/* Conteneur extérieur identique au style violet */
+.outer-image-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+/* Conteneur intérieur commun */
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Section principale (la "carte") */
+.image-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  color: #000;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Conteneur de la barre d'outils */
+.toolbar-container {
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Barre d'outils */
+.toolbar {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Groupes d'outils */
+.toolbar .tool-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Boutons d'outil avec couleurs différentes selon le data-tool */
+button[data-tool="brush"] {
+  background-color: #5dade2; /* Bleu */
+  color: #fff;
+}
+button[data-tool="eraser"] {
+  background-color: #f39c12; /* Orange */
+  color: #fff;
+}
+button[data-tool="square"] {
+  background-color: #27ae60; /* Vert */
+  color: #fff;
+}
+button[data-tool="triangle"] {
+  background-color: #8e44ad; /* Violet */
+  color: #fff;
+}
+button[data-tool="rectangle"] {
+  background-color: #e74c3c; /* Rouge */
+  color: #fff;
+}
+button[data-tool="star"] {
+  background-color: #2ecc71; /* Vert clair */
+  color: #fff;
+}
+
+/* Style général des boutons d'outil */
+.tool-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.tool-btn:hover {
+  transform: scale(1.05);
+}
+.tool-btn.active {
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+/* Styles pour les inputs */
+.color-picker {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.size-slider {
+  width: 100px;
+}
+
+/* Boutons d'action avec des couleurs distinctes */
+#undoBtn {
+  background-color: #9b59b6;
+  color: #fff;
+}
+#clearBtn {
+  background-color: #e67e22;
+  color: #fff;
+}
+#saveBtn {
+  background-color: #3498db;
+  color: #fff;
+}
+#downloadBtn {
+  background-color: #2ecc71;
+  color: #fff;
+}
+.action-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.action-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Conteneur du canvas pour le centrer */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Style du canvas */
+#drawingCanvas {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Animation fadeInUp */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Draw Something{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Draw.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="outer-image-container">
+  <div class="image-container">
+    <div class="image-section">
+      <h2>🖌️ Dessinez Votre Œuvre</h2>
+
+      <!-- Barre d'outils dans un conteneur attractif -->
+      <div class="toolbar-container">
+        <div class="toolbar">
+          <div class="tool-group">
+            <button class="tool-btn active" data-tool="brush">Brush</button>
+            <button class="tool-btn" data-tool="eraser">Eraser</button>
+            <button class="tool-btn" data-tool="square">Square</button>
+            <button class="tool-btn" data-tool="triangle">Triangle</button>
+            <button class="tool-btn" data-tool="rectangle">Rectangle</button>
+            <button class="tool-btn" data-tool="star">Star</button>
+          </div>
+          <div class="tool-group">
+            <input type="color" id="colorPicker" class="color-picker" value="#000000">
+            <input type="range" id="sizeSlider" min="1" max="50" value="5" class="size-slider">
+            <span id="sizeValue">5px</span>
+          </div>
+          <div class="tool-group">
+            <button id="undoBtn" class="action-btn">Undo</button>
+            <button id="clearBtn" class="action-btn">Clear</button>
+            <button id="saveBtn" class="action-btn">Save</button>
+            <a href="{{ url_for('download_current') }}" class="action-btn" id="downloadBtn">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteneur du canvas centré -->
+      <div class="canvas-container">
+        <canvas id="drawingCanvas" width="800" height="600"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/Draw.js') }}"></script>
+{% endblock %}

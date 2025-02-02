@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="edit-art-container">
+    <h2>Modifier l'Art : {{ filename }}</h2>
+
+    <!-- Image de l'art -->
+    <img class="art-preview"
+         src="{{ url_for('static', filename='art/'~filename) }}"
+         alt="Image Art" />
+
+    <hr>
+
+    <!-- Formulaire 1 : Ajouter une forme -->
+    <form method="POST" class="modification-form">
+        <input type="hidden" name="action" value="add_shape">
+        <h3>Ajouter une Forme</h3>
+        <label>Type :</label>
+        <select name="shape_type">
+            <option value="circle">Cercle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="triangle">Triangle</option>
+            <option value="star">Étoile</option>
+            <option value="hexagon">Hexagone</option>
+        </select>
+        <label>Couleur :</label>
+        <input type="color" name="shape_color" value="#ff0000">
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <hr>
+
+    <!-- Formulaire 2 : Changer la couleur de la dernière forme -->
+    <form method="POST" class="modification-form">
+        <input type="hidden" name="action" value="change_color">
+        <h3>Changer la Couleur de la Dernière Forme</h3>
+        <label>Nouvelle Couleur :</label>
+        <input type="color" name="new_color" value="#0000ff">
+        <button type="submit">Changer</button>
+    </form>
+
+    <hr>
+
+    <!-- Formulaire 3 : Déplacer la dernière forme -->
+    <form method="POST" class="modification-form">
+        <input type="hidden" name="action" value="move_shape">
+        <h3>Déplacer la Dernière Forme</h3>
+        <button type="submit">Déplacer</button>
+    </form>
+</div>
+
+{% endblock %}

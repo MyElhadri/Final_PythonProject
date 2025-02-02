@@ -1,0 +1,157 @@
+/* ===============================
+   1) Conteneur extérieur (nouveau dégradé)
+   =============================== */
+.outer-audio-container {
+    max-width: 900px;
+    margin: 40px auto; /* Centre horizontalement + marge en haut/bas */
+    background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+    /* Exemple d’un dégradé violet/rose */
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    color: #fff;    /* Titre en blanc */
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Titre principal */
+.outer-audio-container h2 {
+    margin-top: 0;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===============================
+   2) Conteneur vertical interne
+   =============================== */
+.audio-container {
+    display: flex;
+    flex-direction: column; /* On empile verticalement */
+    align-items: center;    /* Centre horizontalement */
+    gap: 30px;             /* Espace vertical entre les cartes */
+    margin-top: 20px;
+}
+
+/* ===============================
+   3) Cartes (audio-section)
+   =============================== */
+.audio-section {
+    width: 100%;
+    max-width: 500px;  /* Largeur max */
+    background: #fff;  /* Fond blanc */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #000;       /* Texte noir */
+    padding: 20px;
+    position: relative;
+
+    /* Animation d'apparition fadeInUp */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Effet hover : légère mise en valeur */
+.audio-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Titre de section */
+.audio-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===============================
+   4) Boutons et form
+   =============================== */
+button {
+    background: #333;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+button:hover {
+    background: #555;
+}
+
+/* Formulaire en colonne */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+audio {
+    margin-top: 10px;
+}
+
+/* ===============================
+   5) Animations
+   =============================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 🎵 Bouton de Téléchargement Amélioré */
+.download-btn {
+    display: block;
+    width: fit-content;
+    margin: 15px auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #28a745, #218838); /* Dégradé vert */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.5);
+    border: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌟 Effet de survol avec un contour plus visible */
+.download-btn:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    border: 3px solid #34d058;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.7);
+}
+
+/* ✅ Positionnement amélioré */
+.download-container {
+    text-align: center;
+    margin-top: 10px;
+}

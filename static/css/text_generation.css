@@ -1,0 +1,427 @@
+/* static/css/text_gen.css */
+
+.outer-textgen-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #42e695, #3bb2b8);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.outer-textgen-container h2 {
+    margin-top: 0;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.textgen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.textgen-section {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #000;
+    padding: 20px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.textgen-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.textgen-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+select, textarea, input[type="number"] {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+}
+
+textarea {
+    min-height: 60px;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #555;
+}
+
+#generatedResult {
+    margin-top: 15px;
+    text-align: left;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px dashed #ccc;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   Stylisation améliorée des boutons
+   =============================== */
+button {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c); /* Dégradé rose */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff5a99, #ff3d73);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 117, 140, 0.5);
+}
+
+/* ===============================
+   Stylisation du select (modèle de texte)
+   =============================== */
+.select-container {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #3498db; /* Bleu moderne */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    appearance: none; /* Supprime le style natif */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Icône de la flèche personnalisée */
+.select-container::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* Effet hover */
+select:hover {
+    background: #217dbb;
+}
+
+/* Effet focus */
+select:focus {
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
+}
+/* ===============================
+   1️⃣ Stylisation des boutons de soumission
+   =============================== */
+.generate-btn {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c); /* Dégradé rose */
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+}
+
+.generate-btn:hover {
+    background: linear-gradient(135deg, #ff5a99, #ff3d73);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 117, 140, 0.5);
+}
+
+/* ===============================
+   2️⃣ Stylisation du select "Choisir un modèle"
+   =============================== */
+.select-container {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #3498db; /* Bleu moderne */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    appearance: none; /* Supprime le style natif */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Icône de la flèche personnalisée */
+.select-container::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* Effet hover */
+select:hover {
+    background: #217dbb;
+}
+
+/* Effet focus */
+select:focus {
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
+}
+
+/* ===============================
+   3️⃣ Stylisation des champs (Corpus & Nombre de phrases)
+   =============================== */
+.input-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+textarea, input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #4CAF50; /* 🌿 Vert élégant */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+    resize: none;
+}
+
+/* Effet hover */
+textarea:hover, input[type="number"]:hover {
+    background: #45a049; /* Vert plus foncé */
+}
+
+/* Effet focus */
+textarea:focus, input[type="number"]:focus {
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.8);
+}
+
+/* ===============================
+   4️⃣ Affichage du résultat
+   =============================== */
+#generatedResult {
+    margin-top: 15px;
+    text-align: left;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px dashed #ccc;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   1️⃣ Stylisation du champ "Corpus (Markov) ou Prompt (GPT-2)"
+   =============================== */
+.textarea-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Dégradé violet-rose */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    resize: none;
+    box-shadow: 0 4px 10px rgba(106, 130, 251, 0.3);
+}
+
+/* Effet hover */
+textarea:hover {
+    background: linear-gradient(135deg, #5a72f2, #f45289);
+    box-shadow: 0 6px 15px rgba(106, 130, 251, 0.5);
+}
+
+/* Effet focus */
+textarea:focus {
+    background: linear-gradient(135deg, #4a62e2, #e84279);
+    box-shadow: 0 0 10px rgba(106, 130, 251, 0.8);
+}
+/* Centrer le champ "Nombre de phrases (Markov)" */
+.number-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.number-container input[type="number"] {
+    width: 100px; /* Taille ajustée */
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #34a853, #0f9d58); /* Dégradé vert */
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(52, 168, 83, 0.3);
+    transition: 0.3s ease-in-out;
+}
+
+/* Effet hover */
+.number-container input[type="number"]:hover {
+    background: linear-gradient(135deg, #2b8c43, #0a7c40);
+    box-shadow: 0 6px 15px rgba(52, 168, 83, 0.5);
+}
+
+/* Effet focus */
+.number-container input[type="number"]:focus {
+    background: linear-gradient(135deg, #237a38, #086c35);
+    box-shadow: 0 0 10px rgba(52, 168, 83, 0.8);
+    outline: none;
+}
+/* 🌟 Style des labels et textes d'instruction */
+label {
+    font-size: 18px; /* Augmenter la taille */
+    font-weight: bold;
+    color: #222; /* Couleur foncée pour une meilleure lisibilité */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Légère ombre */
+    display: block; /* Assure qu'ils s'affichent bien */
+    margin-bottom: 8px;
+}
+
+/* ✅ Améliorer la visibilité des labels spécifiques */
+label[for="model_choice"],
+label[for="num_sentences"] {
+    color: #FFD700; /* Doré éclatant */
+    font-size: 20px; /* Plus grand */
+}
+
+/* 🏆 Style des inputs et selects */
+input, select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFA500; /* Bordure colorée */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #222;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* ✅ Assurer la lisibilité du texte sur fond clair */
+.artistic-container, .outer-visualization-container {
+    color: #222 !important; /* Forcer une couleur sombre */
+}
+

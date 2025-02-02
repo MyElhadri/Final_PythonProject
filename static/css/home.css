@@ -1,0 +1,178 @@
+/* 🌟 Fond animé pour une ambiance immersive */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 🌟 Conteneur principal */
+.home-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* 🌟 Effet d'apparition fluide */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌟 Titre principal en rouge foncé */
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: #8B0000; /* Rouge foncé */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Légère ombre noire */
+}
+
+/* 🌟 Sous-titre (texte rouge clair, sans fond) */
+/* 🌟 Sous-titre en noir foncé */
+/* 🌟 Sous-titre en noir foncé et gras */
+.subtitle {
+    font-size: 22px;
+    font-weight: 700; /* Gras */
+    margin-bottom: 20px;
+    color: #222; /* Noir foncé */
+    text-shadow: none; /* Pas d'ombre */
+    background: none; /* Pas de fond */
+    padding: 0; /* Pas de marge interne */
+    border-radius: 0; /* Pas de coins arrondis */
+}
+
+
+
+
+
+/* 🌟 COMPTEUR DES FORMES FLOTTANTES */
+.shape-count {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #ffcc00;
+    text-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8);
+}
+
+/* 🌟 Styles des formes flottantes */
+.animated-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.9;
+    animation: float 4s infinite ease-in-out alternate;
+}
+
+.shape-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 87, 51, 0.9); /* Rouge */
+    border-radius: 50%;
+}
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid rgba(51, 153, 255, 0.9); /* Bleu */
+}
+
+.shape-star {
+    font-size: 60px;
+    color: rgba(255, 223, 0, 0.9); /* Jaune */
+}
+
+.shape-hexagon {
+    width: 70px;
+    height: 40px;
+    background: rgba(102, 255, 102, 0.9); /* Vert */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.shape-square {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 165, 0, 0.9); /* Orange */
+}
+
+/* 🌟 Positionnement des formes (12 au total) */
+/* 🌟 Positionnement des formes (avec distribution équilibrée) */
+/* 🌟 Positionnement des 20 formes */
+.shape1 { top: 5%; left: 10%; }   /* Haut gauche */
+.shape2 { top: 10%; left: 30%; }  /* Haut milieu */
+.shape3 { top: 15%; left: 70%; }  /* Haut droite */
+.shape4 { top: 20%; left: 85%; }  /* Haut droite */
+.shape5 { top: 25%; left: 15%; }  /* Haut gauche */
+.shape6 { top: 30%; left: 50%; }  /* Milieu */
+.shape7 { top: 35%; left: 80%; }  /* Milieu droite */
+.shape8 { top: 40%; left: 20%; }  /* Milieu gauche */
+.shape9 { top: 45%; left: 60%; }  /* Milieu */
+.shape10 { top: 50%; left: 10%; } /* Bas gauche */
+.shape11 { top: 55%; left: 85%; } /* Bas droite */
+.shape12 { top: 60%; left: 40%; } /* Milieu bas */
+.shape13 { top: 65%; left: 75%; } /* Bas droite */
+.shape14 { top: 70%; left: 30%; } /* Bas gauche */
+.shape15 { top: 75%; left: 90%; } /* Bas droite */
+.shape16 { top: 80%; left: 50%; } /* Bas milieu */
+.shape17 { top: 85%; left: 15%; } /* Bas gauche */
+.shape18 { top: 90%; left: 65%; } /* Bas droite */
+.shape19 { top: 95%; left: 35%; } /* Bas gauche */
+.shape20 { top: 98%; left: 80%; } /* Bas droite */
+
+
+/* 🌟 Animation de flottement pour les formes */
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+    100% {
+        transform: translateY(-40px) rotate(20deg);
+    }
+}
+
+
+/* 🌟 Bouton interactif avec de nouvelles couleurs */
+.btn-home {
+    background: linear-gradient(to right, #00c6ff, #0072ff); /* Bleu clair au bleu foncé */
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 114, 255, 0.5); /* Ombre dynamique */
+}
+
+.btn-home:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff); /* Inversion du dégradé */
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 114, 255, 0.8);
+}

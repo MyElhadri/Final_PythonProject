@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="outer-art-container">
+    <h2>🎨 Créer votre Art Génératif</h2>
+
+    <form method="POST" class="art-form">
+        <label for="num_shapes">📏 Nombre de formes :</label>
+        <input type="number" id="num_shapes" name="num_shapes" min="1" max="100" value="20" class="input-box">
+
+        <label for="shape_type">🖌️ Type de forme :</label>
+        <select id="shape_type" name="shape_type" class="select-box">
+            <option value="mixed">Mixte</option>
+            <option value="circle">Cercle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="triangle">Triangle</option>
+            <option value="star">Étoile</option>
+            <option value="hexagon">Hexagone</option>
+        </select>
+
+        <label for="color_scheme">🎨 Palette de Couleurs :</label>
+        <select id="color_scheme" name="color_scheme" class="select-box" onchange="toggleColorPicker()">
+            <option value="random">Aléatoire</option>
+            <option value="chaud">Chaud</option>
+            <option value="froid">Froid</option>
+            <option value="custom">Personnalisé</option>
+        </select>
+
+        <input type="color" name="custom_color" id="custom_color" class="color-picker" style="display: none;">
+
+        <button type="submit" class="generate-btn">✨ Générer</button>
+    </form>
+
+    <hr>
+
+    {% if filenames %}
+    <h3>🖼️ Vos Arts Générés :</h3>
+    <div class="art-gallery">
+        {% for fname in filenames %}
+        <div class="art-piece">
+            <img src="{{ url_for('static', filename='art/' ~ fname) }}" class="generated-art">
+            <div class="art-actions">
+                <a href="{{ url_for('download_art', filename=fname) }}" class="btn download-btn">📥 Télécharger</a>
+                <a href="{{ url_for('edit_art', filename=fname) }}" class="btn edit-btn">✏️ Modifier</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

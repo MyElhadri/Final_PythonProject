@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="outer-image-container">
+    <h2>📷 Upload et Modification d'Image (AJAX)</h2>
+
+    <div class="image-container">
+        <!-- Une seule "carte" section -->
+        <div class="image-section">
+            <h3>🖼️ Appliquer un Effet</h3>
+            <form id="uploadForm" enctype="multipart/form-data">
+               <label for="image" class="file-label">📁 Sélectionner une image</label>
+               <input type="file" id="image" name="image" accept="image/*" required>
+
+               <label for="filter">Choisissez un effet :</label>
+               <div class="select-container">
+                   <select id="filter" name="filter">
+                       <option value="grayscale">Grayscale</option>
+                       <option value="sepia">Sepia</option>
+                       <option value="invert">Inversion</option>
+                       <option value="blur">Flou</option>
+                       <option value="glitch">Glitch</option>
+                   </select>
+               </div>
+
+               <button type="submit">Téléverser et Appliquer</button>
+            </form>
+
+            <!-- Conteneur pour l'image traitée -->
+            <div id="resultContainer"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

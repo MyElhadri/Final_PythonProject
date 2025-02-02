@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie Générative</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/art.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_art.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/audio.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/image.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/text_generation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_transfer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Draw.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Gallery.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/art.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/audio.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/image.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/text_generation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/style_transfer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Draw.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Gallery.js') }}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #a8e6cf, #dcedc1);
+            margin: 0; padding: 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="{{ url_for('home') }}">Accueil</a> |
+    <a href="{{ url_for('art') }}">Art</a> |
+    <a href="{{ url_for('data_visualization') }}">Visualisation</a> |
+    <a href="{{ url_for('audio_page') }}">Audio</a> |
+    <a href="{{ url_for('image_page') }}">Image</a> |
+    <a href="{{ url_for('draw_page') }}">Draw</a> |
+    <a href="{{ url_for('gallery_page') }}">Gallery</a> |
+    <a href="{{ url_for('text_gen') }}">Text Generation</a> |
+<a href="{{ url_for('style_transfer.style_transfer') }}">Style Transfer</a>
+
+</nav>
+
+<hr>
+<div style="padding: 20px;">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

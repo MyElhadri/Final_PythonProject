@@ -1,0 +1,19 @@
+Flask==2.3.3
+pydub==0.25.1
+pygame==2.5.2
+
+# Pour le traitement d'images et le plotting
+Pillow==10.4.0
+matplotlib==3.10.0
+
+# NumPy et SciPy (ex. versions courantes ; 2.x n’existe pas pour NumPy)
+numpy==1.24.3
+scipy==1.10.1
+
+# Pour Markov, Transformers, PyTorch...
+markovify==0.9.4
+transformers==4.31.0
+torch==2.0.0
+torchvision==0.15.0
+
+

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="outer-audio-container">
+    <h2>🎵 Gestion des Audios 🎵</h2>
+
+    <div class="audio-container">
+        <!-- Génération d'une mélodie -->
+<div class="audio-section generate">
+    <h3>🎼 Générer une Mélodie Aléatoire</h3>
+    <button id="generate-audio-btn">🎶 Générer</button>
+    <audio id="generated-audio" controls style="display: none; margin-top: 10px;"></audio>
+</div>
+
+<!-- Modification d'un fichier audio -->
+<div class="audio-section process">
+    <h3>🎚️ Modifier un Fichier Audio</h3>
+    <form id="process-audio-form" method="POST" enctype="multipart/form-data" action="/process_audio">
+        <div class="file-upload-container">
+            <label for="file1" class="file-label">📁 Choisir un fichier</label>
+            <input type="file" id="file1" name="file" accept="audio/wav" required>
+        </div>
+        <label for="speed">Vitesse :</label>
+        <input type="range" name="speed" id="speed" min="0.5" max="2" step="0.1" value="1">
+        <button type="submit">Modifier</button>
+    </form>
+</div>
+
+<!-- Fusion de deux fichiers audio -->
+<div class="audio-section merge">
+    <h3>🔄 Fusionner Deux Audios</h3>
+    <form id="merge-audio-form" method="POST" enctype="multipart/form-data" action="/merge_audio">
+        <div class="file-upload-container">
+            <label for="file2" class="file-label">📁 Choisir le premier fichier</label>
+            <input type="file" id="file2" name="file1" accept="audio/wav" required>
+            <label for="file3" class="file-label">📁 Choisir le deuxième fichier</label>
+            <input type="file" id="file3" name="file2" accept="audio/wav" required>
+        </div>
+        <button type="submit">Fusionner</button>
+    </form>
+</div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Style Transfer{% endblock %}
+
+{% block head %}
+  <!-- Include the style_transfer stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_transfer.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Style Transfer</h1>
+  <p>Transform your image using the style of a famous artwork.</p>
+  <form id="styleTransferForm" action="{{ url_for('style_transfer.style_transfer') }}" method="post" enctype="multipart/form-data">
+    <div class="upload-section">
+      <div class="upload-group">
+        <!-- Custom button for Content Image -->
+        <button type="button" class="btn file-btn" id="contentButton">Content Image</button>
+        <!-- Hidden file input -->
+        <input type="file" id="content_image" name="content_image" accept="image/*" required style="display: none;">
+        <div class="preview">
+          <img id="contentPreview" src="#" alt="Content Preview" style="display: none;">
+        </div>
+      </div>
+      <div class="upload-group">
+        <!-- Custom button for Style Image -->
+        <button type="button" class="btn file-btn" id="styleButton">Style Image</button>
+        <!-- Hidden file input -->
+        <input type="file" id="style_image" name="style_image" accept="image/*" required style="display: none;">
+        <div class="preview">
+          <img id="stylePreview" src="#" alt="Style Preview" style="display: none;">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn">Apply Style Transfer</button>
+  </form>
+
+  <div id="loading" style="display: none;">
+    <p>Processing your images, please wait...</p>
+  </div>
+
+  {% if result_image %}
+  <div class="result-section">
+    <h2>Result</h2>
+    <div class="images-before-after">
+      <div class="before">
+        <h3>Content Image</h3>
+        <img src="{{ url_for('static', filename='images/' ~ content_image) }}" alt="Content Image">
+      </div>
+      <div class="before">
+        <h3>Style Image</h3>
+        <img src="{{ url_for('static', filename='images/' ~ style_image) }}" alt="Style Image">
+      </div>
+      <div class="after">
+        <h3>Stylized Image</h3>
+        <img src="{{ result_image }}" alt="Stylized Image">
+        <a href="{{ result_image }}" download="stylized_image.png" class="btn download-btn">Download Image</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/style_transfer.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="outer-textgen-container">
+    <h2>📝 Génération de Texte (Markov / GPT-2)</h2>
+
+    <div class="textgen-container">
+        <div class="textgen-section">
+            <h3>Générez du texte</h3>
+
+            <!-- Formulaire POST vers /text_gen -->
+            <form method="POST" action="{{ url_for('text_gen') }}">
+
+                <!-- Sélecteur du modèle -->
+                <label for="model_choice">Choisissez un modèle :</label>
+                <div class="select-container">
+                    <select id="model_choice" name="model_choice">
+                        <option value="markov"
+                            {% if model_choice != 'gpt2' %}selected{% endif %}>
+                            Markov
+                        </option>
+                        <option value="gpt2"
+                            {% if model_choice == 'gpt2' %}selected{% endif %}>
+                            GPT-2
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Champ pour saisir le corpus ou le prompt -->
+                <label for="corpus_text">Corpus (Markov) ou Prompt (GPT-2) :</label>
+                <div class="textarea-container">
+                    <textarea id="corpus_text" name="corpus_text" rows="4"
+                              placeholder="✍️ Tapez votre texte ici..."></textarea>
+                </div>
+
+                <!-- Sélecteur du nombre de phrases -->
+                <label for="nb_sentences">Nombre de phrases (Markov) :</label>
+                <div class="number-container">
+                    <input type="number" id="nb_sentences" name="nb_sentences"
+                           value="3" min="1" max="10">
+                </div>
+
+                <!-- Bouton de génération -->
+                <button type="submit" class="generate-btn">🚀 Générer le Texte</button>
+            </form>
+
+            <!-- Affichage du résultat si "generated_text" existe -->
+            {% if generated_text %}
+              <div id="generatedResult">
+                  <h4>📜 Résultat :</h4>
+                  <p>{{ generated_text }}</p>
+              </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Data Visualization{% endblock %}
+
+{% block content %}
+
+<!-- 🌊 Conteneur Principal -->
+<div class="outer-visualization-container">
+
+  <!-- 📌 Titre Principal -->
+  <h1 class="artistic-heading">🌍 Dynamic Data Insights</h1>
+
+  <!-- 🎭 Citation Aléatoire -->
+  {% if statement %}
+  <h2 class="random-statement">🎭 {{ statement }}</h2>
+  {% endif %}
+
+  <!-- 📊 Wrapper pour centrer les 2 tableaux -->
+  <div class="tables-wrapper">
+
+      <!-- 📊 Tableau des Données -->
+      <div class="table-container">
+          <h2 class="section-heading">📊 Data Snapshot</h2>
+          <table class="data-table">
+              {{ table|safe }}
+          </table>
+      </div>
+
+      <!-- 📈 Tableau des Statistiques -->
+      <div class="stats-container">
+          <h2 class="section-heading">📈 Data Analysis</h2>
+          <div class="table-container stats-table">
+              <table class="data-table">
+                  {{ stats|safe }}
+              </table>
+          </div>
+      </div>
+
+  </div> <!-- ✅ Fin du wrapper des tableaux -->
+
+  <!-- 🎨 Bouton pour Générer un Graphique -->
+  <form method="POST">
+    <button type="submit" class="generate-chart-btn">✨ Generate Beautiful Chart</button>
+  </form>
+
+  <!-- 🌀 Graphique Généré -->
+  {% if chart_url %}
+  <h2 class="section-heading">📊 Visual Representation</h2>
+  <div class="chart-container">
+    <img src="{{ chart_url }}" alt="Generated Chart">
+  </div>
+  {% endif %}
+
+</div> <!-- ✅ .outer-visualization-container -->
+
+{% endblock %}

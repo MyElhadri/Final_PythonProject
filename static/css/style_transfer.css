@@ -1,0 +1,156 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2980b9;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.upload-group {
+    flex: 1 1 40%;
+    margin: 10px;
+    text-align: center;
+}
+
+.upload-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2980b9;
+}
+
+.upload-group input[type="file"] {
+    padding: 10px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-group input[type="file"]::-webkit-file-upload-button {
+    background: #3498db;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-group input[type="file"]:hover::-webkit-file-upload-button {
+    background: #2980b9;
+}
+
+.preview {
+    margin-top: 15px;
+}
+
+.preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border: 2px solid #2980b9;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    width: 220px;
+    margin: 20px auto;
+    padding: 12px;
+    background: #2980b9;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #1c5980;
+}
+
+/* Download Button Specific */
+.download-btn {
+    margin-top: 10px;
+    display: block;
+}
+
+/* Loading Indicator */
+#loading {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #2980b9;
+}
+
+/* Result Section */
+.result-section {
+    margin-top: 40px;
+}
+
+.result-section h2 {
+    text-align: center;
+    color: #2980b9;
+    margin-bottom: 20px;
+}
+
+.images-before-after {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.images-before-after .before,
+.images-before-after .after {
+    flex: 1 1 30%;
+    text-align: center;
+    margin: 10px;
+}
+
+.images-before-after img {
+    max-width: 100%;
+    border: 3px solid #3498db;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.images-before-after img:hover {
+    transform: scale(1.05);
+}
