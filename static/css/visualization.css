@@ -214,3 +214,23 @@ body {
     background: rgba(255, 255, 255, 0.95); /* Fond blanc opaque */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+.chart-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center; /* center them horizontally */
+}
+
+/* Example: different color for swirl chart button */
+.generate-chart-btn {
+  background-color: #5cb85c;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.generate-chart-btn:hover {
+  background-color: #4cae4c;
+}

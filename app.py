@@ -145,29 +145,67 @@ def hex_to_rgb(hexcolor):
     b = int(hexcolor[5:7], 16)
     return (r, g, b)
 
+
 # --------------------------------------------------------------
 # 3. DATA VISUALIZATION ROUTE
 # --------------------------------------------------------------
+
+from data_visualizations.data_viz_logic import (
+    load_weather_data,
+    create_swirl_chart,
+    # Import the new creative visualization functions:
+    create_abstract_wave_chart,
+    create_dynamic_bar_chart,
+    create_temperature_heatmap
+)
+
+
 @app.route("/data_visualization", methods=["GET", "POST"])
 def data_visualization():
+    # 1. Load and sample data
     df = load_weather_data()
     df_sample = df.sample(10)
     table = df_sample.to_html(classes="data-table")
     stats = df.describe().to_html(classes="data-stats")
     statement = random.choice(STATEMENTS)
+
+    # 2. Default chart URL is None
     chart_url = None
 
+    # 3. Check if this is a POST request to generate a chart
     if request.method == "POST":
-        filename = f"weather_chart_{secrets.token_hex(4)}.png"
+        # Which chart type did the user request?
+        chart_type = request.form.get("chart_type", "swirl")  # default to swirl if not set
+
+        # Generate a unique filename
+        filename = f"{chart_type}_chart_{secrets.token_hex(4)}.png"
         output_path = os.path.join(IMAGES_FOLDER, filename)
-        create_swirl_chart(df, output_path)
+
+        # 4. Call the corresponding function
+        if chart_type == "swirl":
+            create_swirl_chart(df, output_path)
+        elif chart_type == "abstract_wave":
+            create_abstract_wave_chart(df, output_path)
+        elif chart_type == "dynamic_bar":
+            create_dynamic_bar_chart(df, output_path)
+        elif chart_type == "heatmap":
+            create_temperature_heatmap(df, output_path)
+        else:
+            # Fallback to swirl or do nothing
+            create_swirl_chart(df, output_path)
+
+        # 5. Build the chart URL for display
         chart_url = url_for("static", filename=f"images/{filename}")
 
-    return render_template("data_viz.html",
-                           table=table,
-                           stats=stats,
-                           statement=statement,
-                           chart_url=chart_url)
+    # 6. Render the template
+    return render_template(
+        "data_viz.html",
+        table=table,
+        stats=stats,
+        statement=statement,
+        chart_url=chart_url
+    )
+
 
 # --------------------------------------------------------------
 # 4. AUDIO ROUTES

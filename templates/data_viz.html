@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block title %}Data Visualization{% endblock %}
 
 {% block content %}
@@ -12,12 +11,11 @@
 
   <!-- 🎭 Citation Aléatoire -->
   {% if statement %}
-  <h2 class="random-statement">🎭 {{ statement }}</h2>
+    <h2 class="random-statement">🎭 {{ statement }}</h2>
   {% endif %}
 
   <!-- 📊 Wrapper pour centrer les 2 tableaux -->
   <div class="tables-wrapper">
-
       <!-- 📊 Tableau des Données -->
       <div class="table-container">
           <h2 class="section-heading">📊 Data Snapshot</h2>
@@ -35,13 +33,34 @@
               </table>
           </div>
       </div>
-
   </div> <!-- ✅ Fin du wrapper des tableaux -->
 
-  <!-- 🎨 Bouton pour Générer un Graphique -->
-  <form method="POST">
-    <button type="submit" class="generate-chart-btn">✨ Generate Beautiful Chart</button>
-  </form>
+  <!-- 🎨 Buttons to Generate Different Charts -->
+  <div class="chart-buttons">
+    <form method="POST">
+      <!-- Hidden field specifying swirl chart -->
+      <input type="hidden" name="chart_type" value="swirl" />
+      <button type="submit" class="generate-chart-btn">🌪 Generate Swirl Chart</button>
+    </form>
+
+    <form method="POST">
+      <!-- Hidden field specifying abstract wave chart -->
+      <input type="hidden" name="chart_type" value="abstract_wave" />
+      <button type="submit" class="generate-chart-btn">🌊 Abstract Wave Chart</button>
+    </form>
+
+    <form method="POST">
+      <!-- Hidden field specifying dynamic bar chart -->
+      <input type="hidden" name="chart_type" value="dynamic_bar" />
+      <button type="submit" class="generate-chart-btn">💎 Dynamic Bar Chart</button>
+    </form>
+
+    <form method="POST">
+      <!-- Hidden field specifying heatmap -->
+      <input type="hidden" name="chart_type" value="heatmap" />
+      <button type="submit" class="generate-chart-btn">🔥 Temperature Heatmap</button>
+    </form>
+  </div>
 
   <!-- 🌀 Graphique Généré -->
   {% if chart_url %}
