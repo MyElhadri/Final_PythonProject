@@ -315,6 +315,8 @@ def generate_random_melody():
 def change_audio_speed(audio_file, speed):
     """
     Modifie la vitesse d'un fichier audio (wav/mp3) sans changer le pitch.
+    Gère speed > 1.0 (accélération) et speed < 1.0 (ralentissement),
+    en s'assurant que la taille finale soit multiple du nombre de canaux.
     """
     try:
         file_format = 'wav'
@@ -328,21 +330,45 @@ def change_audio_speed(audio_file, speed):
         seg = AudioSegment.from_file(audio_file, format=file_format)
 
         if speed > 1.0:
+            # Cas d'accélération : on peut utiliser directement speedup() de pydub
             seg = speedup(seg, playback_speed=speed)
         elif speed < 1.0:
+            # Cas de ralentissement : on interpole manuellement
+            channels = seg.channels
             samples = np.array(seg.get_array_of_samples())
-            new_len = int(len(samples)/speed)
+            # Calculer la nouvelle taille (plus grande pour un ralentissement)
+            new_len = int(len(samples) / speed)
+
+            # Assurer qu'on ait un multiple du nombre de canaux
+            # (pour éviter l'erreur "data length must be multiple of sample_width*channels")
+            remainder = new_len % channels
+            if remainder != 0:
+                new_len -= remainder
+
+            if new_len < channels:
+                # En cas d'arrondi extrême, on force au minimum
+                new_len = channels
+
+            # Interpolation
             slowed = np.interp(
                 np.linspace(0, len(samples), new_len),
                 np.arange(len(samples)),
                 samples
             ).astype(samples.dtype)
+
+            # Vérifier une dernière fois la divisibilité
+            remainder2 = len(slowed) % channels
+            if remainder2 != 0:
+                slowed = slowed[:(len(slowed) - remainder2)]
+
             seg = AudioSegment(
                 slowed.tobytes(),
                 frame_rate=seg.frame_rate,
                 sample_width=seg.sample_width,
-                channels=seg.channels
+                channels=channels
             )
+
+        # else: speed == 1.0 => on ne fait rien, c'est inchangé
 
         out = io.BytesIO()
         seg.export(out, format="wav")

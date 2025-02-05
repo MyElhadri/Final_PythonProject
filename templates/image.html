@@ -1,32 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="outer-image-container">
-    <h2>📷 Upload et Modification d'Image (AJAX)</h2>
+    <h2>📷 Modifier votre image avec des effets artistiques</h2>
 
     <div class="image-container">
-        <!-- Une seule "carte" section -->
         <div class="image-section">
-            <h3>🖼️ Appliquer un Effet</h3>
+            <h3>🖼️ Sélectionnez un effet</h3>
             <form id="uploadForm" enctype="multipart/form-data">
-               <label for="image" class="file-label">📁 Sélectionner une image</label>
-               <input type="file" id="image" name="image" accept="image/*" required>
+                <label for="image" class="file-label">📁 Choisissez une image</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
 
-               <label for="filter">Choisissez un effet :</label>
-               <div class="select-container">
-                   <select id="filter" name="filter">
-                       <option value="grayscale">Grayscale</option>
-                       <option value="sepia">Sepia</option>
-                       <option value="invert">Inversion</option>
-                       <option value="blur">Flou</option>
-                       <option value="glitch">Glitch</option>
-                   </select>
-               </div>
+                <label for="filter">🎨 Appliquez un effet :</label>
+                <div class="select-container">
+                    <select id="filter" name="filter">
+                        <option value="grayscale">Noir & Blanc</option>
+                        <option value="sepia">Sépia</option>
+                        <option value="invert">Inversion</option>
+                        <option value="blur">Flou</option>
+                        <option value="glitch">Glitch</option>
+                        <option value="oil_painting">Peinture à l'huile</option>
+                        <option value="sketch">Dessin au crayon</option>
+                        <option value="neon_glow">Éclat Néon</option>
+                        <option value="dreamy_blur">Flou de rêve</option>
+                        <option value="pastel">Effet pastel</option>
+                        <option value="mosaic">Mosaïque</option>
+                        <option value="halftone">Demi-teinte</option>
+                        <option value="cartoon">Dessin animé</option>
+                        <option value="pop_art">Pop Art</option>
+                        <option value="vintage">Vintage</option>
+                    </select>
+                </div>
 
-               <button type="submit">Téléverser et Appliquer</button>
+                <button type="submit">✨ Appliquer l'effet</button>
             </form>
 
-            <!-- Conteneur pour l'image traitée -->
-            <div id="resultContainer"></div>
+            <div id="previewResultContainer">
+                <div class="image-box">
+                    <h4>Avant</h4>
+                    <img id="imagePreview" src="#" alt="Aperçu" style="display: none;">
+                </div>
+                <div class="image-box">
+                    <h4>Après</h4>
+                    <img id="processedImage" src="#" alt="Image traitée" style="display: none;">
+                </div>
+            </div>
+
+            <a id="downloadBtn" href="#" download="filtered_image.png" class="download-btn" style="display: none;">
+                ⬇️ Télécharger l'image
+            </a>
         </div>
     </div>
 </div>

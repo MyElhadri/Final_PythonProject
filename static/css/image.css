@@ -5,15 +5,13 @@
     max-width: 900px;
     margin: 40px auto;
     background: linear-gradient(135deg, #6a82fb, #fc5c7d);
-    /* Violet -> rose, ajustez si vous voulez d'autres couleurs */
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    color: #fff;                /* Titre en blanc */
+    color: #fff;
     text-align: center;
     padding: 30px 20px;
 }
 
-/* Titre principal */
 .outer-image-container h2 {
     margin-top: 0;
     font-size: 28px;
@@ -26,38 +24,34 @@
    =============================== */
 .image-container {
     display: flex;
-    flex-direction: column;    /* On empile verticalement si on veut plusieurs sections */
-    align-items: center;       /* Centre horizontalement */
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
     margin-top: 20px;
 }
 
 /* ===============================
-   3) "Carte" : .image-section
+   3) Section d'image
    =============================== */
 .image-section {
     width: 100%;
     max-width: 500px;
-    background: #fff;          /* Fond blanc */
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    color: #000;               /* Texte noir */
+    color: #000;
     padding: 20px;
     position: relative;
-
-    /* Animation fadeInUp */
     opacity: 0;
     transform: translateY(40px);
     animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Effet hover : légère mise en valeur */
 .image-section:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* Titre de la section */
 .image-section h3 {
     margin-top: 0;
     margin-bottom: 15px;
@@ -81,25 +75,23 @@ label {
 }
 
 input[type="file"] {
-    display: none; /* Cache l'input original */
+    display: none;
 }
 
 .file-label {
-    background: #555; /* Change la couleur ici */
+    background: #555;
     color: #fff;
     font-size: 1rem;
     padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
-    border: none;
-    outline: none;
     transition: 0.3s;
     display: inline-block;
     margin-top: 10px;
 }
 
 .file-label:hover {
-    background: #777; /* Couleur au survol */
+    background: #777;
 }
 
 select {
@@ -116,8 +108,6 @@ button {
     padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
-    border: none;
-    outline: none;
     transition: 0.3s;
     margin-top: 10px;
 }
@@ -142,63 +132,78 @@ button:hover {
 }
 
 /* ===============================
-   6) Animation fadeInUp
+   6) Style du bouton de téléchargement
    =============================== */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===============================
-   Stylisation améliorée du select "Choisissez un effet"
-   =============================== */
-.select-container {
-    position: relative;
-    width: 100%;
-    max-width: 250px;
-    text-align: center;
-}
-
-select {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 1rem;
-    font-weight: bold;
-    background: #3498db; /* 💙 Bleu élégant */
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #27ae60;
     color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
     transition: 0.3s;
-    appearance: none; /* Supprime le style natif */
+}
+
+.download-btn:hover {
+    background: #1e8449;
+}
+/* ===============================
+   5) Conteneur de l'aperçu de l'image avant upload
+   =============================== */
+#previewContainer {
+    margin-top: 15px;
+    text-align: center;
+    display: none; /* Masqué par défaut */
+}
+
+#previewContainer img {
+    max-width: 300px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* ===============================
+   5) Conteneur de l'aperçu et du résultat côte à côte
+   =============================== */
+#previewResultContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
     text-align: center;
 }
 
-/* Icône de la flèche personnalisée */
-.select-container::after {
-    content: "▼";
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+/* Style des conteneurs pour les images */
+.image-box {
+    flex: 1;
+    max-width: 300px;
+}
+
+.image-box img {
+    max-width: 100%;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton de téléchargement stylisé */
+.download-btn {
+    display: block;
+    text-align: center;
+    background: #3498db;
     color: white;
-    font-size: 16px;
-    pointer-events: none;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
 }
 
-/* Effet hover */
-select:hover {
-    background: #217dbb; /* Bleu plus foncé */
-}
-
-/* Effet focus */
-select:focus {
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
+.download-btn:hover {
+    background: #217dbb;
 }

@@ -1,19 +1,18 @@
 /* ===============================
-   1) Conteneur extérieur (nouveau dégradé)
+   1) Conteneur extérieur (Dégradé)
    =============================== */
 .outer-audio-container {
     max-width: 900px;
-    margin: 40px auto; /* Centre horizontalement + marge en haut/bas */
+    margin: 40px auto;
     background: linear-gradient(135deg, #6a82fb, #fc5c7d);
-    /* Exemple d’un dégradé violet/rose */
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    color: #fff;    /* Titre en blanc */
+    color: #fff;
     text-align: center;
     padding: 30px 20px;
 }
 
-/* Titre principal */
+/* 🎵 Titre principal */
 .outer-audio-container h2 {
     margin-top: 0;
     font-size: 28px;
@@ -22,42 +21,67 @@
 }
 
 /* ===============================
-   2) Conteneur vertical interne
+   2) Boutons d'action
    =============================== */
-.audio-container {
+.button-container {
     display: flex;
-    flex-direction: column; /* On empile verticalement */
-    align-items: center;    /* Centre horizontalement */
-    gap: 30px;             /* Espace vertical entre les cartes */
-    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.button-container button {
+    background: #333;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+.button-container button:hover {
+    background: #555;
 }
 
 /* ===============================
-   3) Cartes (audio-section)
+   3) Conteneur vertical interne
+   =============================== */
+.audio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* ===============================
+   4) Cartes (audio-section)
    =============================== */
 .audio-section {
     width: 100%;
-    max-width: 500px;  /* Largeur max */
-    background: #fff;  /* Fond blanc */
+    max-width: 500px;
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    color: #000;       /* Texte noir */
+    color: #000;
     padding: 20px;
     position: relative;
+    display: none; /* Masqué par défaut */
 
-    /* Animation d'apparition fadeInUp */
+    /* Animation d'apparition */
     opacity: 0;
     transform: translateY(40px);
     animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Effet hover : légère mise en valeur */
+/* Effet hover */
 .audio-section:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* Titre de section */
+/* Titre des sections */
 .audio-section h3 {
     margin-top: 0;
     margin-bottom: 15px;
@@ -66,7 +90,7 @@
 }
 
 /* ===============================
-   4) Boutons et form
+   5) Boutons et Formulaires
    =============================== */
 button {
     background: #333;
@@ -92,19 +116,10 @@ form {
     margin-top: 10px;
 }
 
-input[type="file"] {
-    margin-bottom: 10px;
-}
-
 label {
     display: block;
     font-weight: bold;
     margin: 10px 0 5px;
-}
-
-input[type="range"] {
-    width: 100%;
-    margin-bottom: 10px;
 }
 
 audio {
@@ -112,7 +127,7 @@ audio {
 }
 
 /* ===============================
-   5) Animations
+   6) Animations
    =============================== */
 @keyframes fadeInUp {
   0% {
@@ -124,7 +139,8 @@ audio {
     transform: translateY(0);
   }
 }
-/* 🎵 Bouton de Téléchargement Amélioré */
+
+/* 🎵 Bouton de Téléchargement */
 .download-btn {
     display: block;
     width: fit-content;
@@ -135,14 +151,12 @@ audio {
     text-align: center;
     text-decoration: none;
     color: white;
-    background: linear-gradient(135deg, #28a745, #218838); /* Dégradé vert */
+    background: linear-gradient(135deg, #28a745, #218838);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(40, 167, 69, 0.5);
     border: 3px solid transparent;
     transition: all 0.3s ease-in-out;
 }
-
-/* 🌟 Effet de survol avec un contour plus visible */
 .download-btn:hover {
     background: linear-gradient(135deg, #218838, #1e7e34);
     border: 3px solid #34d058;
@@ -154,4 +168,25 @@ audio {
 .download-container {
     text-align: center;
     margin-top: 10px;
+}
+
+/* Labels de fichiers */
+.file-label {
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s;
+    text-align: center;
+}
+.file-label:hover {
+    background: #555;
+}
+.file-name {
+    display: block;
+    margin-top: 5px;
+    font-style: italic;
+    color: #666;
 }
