@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData(uploadForm);
 
-    // On suppose que votre route est /apply_filter_ajax
+    // On suppose que votre route est /apply_filter_ajax pour l'image
     fetch("/apply_filter_ajax", {
       method: "POST",
       body: formData

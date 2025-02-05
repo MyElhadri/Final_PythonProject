@@ -18,7 +18,8 @@ from generative_art.art_generator import create_image_from_shapes, generate_rand
 # Data visualization
 from data_visualizations.data_viz_logic import load_weather_data, create_swirl_chart
 # Audio tools
-from image_audio_tools.audio_tools import generate_random_melody, change_audio_speed, merge_audio_files
+from image_audio_tools.audio_tools import generate_random_melody, change_audio_speed, merge_audio_files, \
+    apply_filter_to_audio
 from pydub import AudioSegment
 from pydub.generators import Sine
 # Image filters
@@ -252,6 +253,22 @@ def merge_audio():
     except Exception as e:
         print("❌ Error merging audio:", e)
         return "Internal Server Error", 500
+
+@app.route("/apply_audio_filter", methods=["POST"])
+def apply_audio_filter():
+    try:
+        file = request.files.get("file")
+        filter_type = request.form.get("filterType")
+        if not file or not filter_type:
+            return "Error: Missing file or filter type.", 400
+
+        buffer = apply_filter_to_audio(file, filter_type)
+        return send_file(buffer, mimetype="audio/wav")
+    except Exception as e:
+        print("❌ Error applying audio filter:", e)
+        return "Internal Server Error", 500
+
+
 
 # --------------------------------------------------------------
 # 5. IMAGE MANIPULATION ROUTES

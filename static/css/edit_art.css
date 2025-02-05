@@ -1,55 +1,83 @@
-/* Conteneur principal : centré, fond blanc, texte noir */
-.edit-art-container {
-    max-width: 800px;
-    margin: 40px auto;                /* Centre horizontalement et ajoute 40px de marge verticale */
-    background: #fff;                 /* Fond blanc */
-    color: #000;                      /* Texte noir */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-
-    display: flex;                    /* Pour centrer l'image et les formulaires verticalement */
-    flex-direction: column;
-    align-items: center;             /* Aligne au centre horizontal */
+/* ===============================
+   1) Conteneur extérieur (fond dégradé)
+   =============================== */
+.outer-editart-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
 }
 
-/* Titre */
-.edit-art-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+.outer-editart-container h2 {
+    margin-top: 0;
+    font-size: 28px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* L'image d'aperçu */
-.art-preview {
-    width: 300px;         /* Ajustez la taille selon vos préférences */
-    display: block;
-    margin-bottom: 20px;
+/* ===============================
+   2) "Carte" blanche : .edit-art-container
+   =============================== */
+.edit-art-container {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    color: #000;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    position: relative;
+
+    /* Animation fadeInUp similaire à audio.css / image.css */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Les formulaires */
+.edit-art-container h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+/* Aperçu de l'image */
+.art-preview {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 500px;
+    border: 5px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   3) Formulaires
+   =============================== */
 .modification-form {
-    background: #f8f8f8;  /* Légèrement gris pour contraste */
-    color: #000;          /* Texte noir */
+    background: #f8f8f8;
+    color: #000;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
-    width: 100%;          /* S'étend sur toute la largeur du container */
-    max-width: 600px;     /* Mais pas plus de 600px pour éviter l'étirement */
-    margin-bottom: 20px;  /* Espace en bas du formulaire */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* On aligne labels/inputs à gauche dans la boîte */
-}
-
-.modification-form h3 {
-    margin-top: 0; /* Enlève la marge supérieure par défaut */
+    align-items: flex-start;
 }
 
 .modification-form label {
     font-weight: bold;
-    margin: 10px 0 5px 0; /* marge au dessus/sous du label */
+    margin: 10px 0 5px 0;
 }
 
 .modification-form select,
@@ -68,31 +96,58 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 5px;
+    transition: background 0.3s ease;
 }
-
 .modification-form button:hover {
     background: #555;
 }
 
-/* Séparateurs */
+/* ===============================
+   4) Bouton Téléchargement
+   =============================== */
+.download-btn {
+    display: inline-block;
+    margin: 15px auto;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #28a745, #218838);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.5);
+    border: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+.download-btn:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    border: 3px solid #34d058;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.7);
+}
+
+/* ===============================
+   5) Séparateur <hr>
+   =============================== */
 .edit-art-container hr {
     width: 100%;
     border: none;
     border-top: 1px solid #ccc;
     margin: 20px 0;
 }
-.art-preview {
-    display: block;            /* Pour la centrer avec margin: 0 auto si besoin */
-    margin: 0 auto 20px;       /* Centre horizontalement l’image et lui donne 20px de marge en bas */
-    max-width: 500px;          /* Largeur max pour éviter qu’elle prenne toute la page */
 
-    /* Encadrement visible */
-    border: 5px solid #000;    /* Épaisseur et couleur du cadre */
-    border-radius: 5px;        /* Coins légèrement arrondis (optionnel) */
-
-    /* Fond blanc pour détacher l’image si le fond est coloré */
-    background-color: #fff;
-
-    /* Ombre pour mieux la faire ressortir (optionnel) */
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+/* ===============================
+   6) Animation fadeInUp
+   =============================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

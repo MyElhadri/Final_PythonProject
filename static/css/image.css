@@ -81,7 +81,25 @@ label {
 }
 
 input[type="file"] {
-    margin-bottom: 10px;
+    display: none; /* Cache l'input original */
+}
+
+.file-label {
+    background: #555; /* Change la couleur ici */
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.file-label:hover {
+    background: #777; /* Couleur au survol */
 }
 
 select {
@@ -121,10 +139,6 @@ button:hover {
     border: 2px solid #333;
     border-radius: 5px;
     margin-top: 10px;
-    /* Vous pouvez aussi réutiliser l'animation fadeInUp si vous voulez : */
-    /* animation: fadeInUp 0.5s ease forwards;
-       opacity: 0;
-       transform: translateY(40px); */
 }
 
 /* ===============================
@@ -140,32 +154,9 @@ button:hover {
     transform: translateY(0);
   }
 }
-/* ===============================
-   Bouton "Sélectionner une image"
-   =============================== */
-input[type="file"] {
-    display: none; /* Cache l'input original */
-}
 
-.file-label {
-    background: #555; /* Change la couleur ici */
-    color: #fff;
-    font-size: 1rem;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    transition: 0.3s;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.file-label:hover {
-    background: #777; /* Couleur au survol */
-}
 /* ===============================
-   Stylisation améliorée du select "Choisir un effet"
+   Stylisation améliorée du select "Choisissez un effet"
    =============================== */
 .select-container {
     position: relative;

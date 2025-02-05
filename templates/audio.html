@@ -4,40 +4,70 @@
     <h2>🎵 Gestion des Audios 🎵</h2>
 
     <div class="audio-container">
-        <!-- Génération d'une mélodie -->
-<div class="audio-section generate">
-    <h3>🎼 Générer une Mélodie Aléatoire</h3>
-    <button id="generate-audio-btn">🎶 Générer</button>
-    <audio id="generated-audio" controls style="display: none; margin-top: 10px;"></audio>
-</div>
 
-<!-- Modification d'un fichier audio -->
-<div class="audio-section process">
-    <h3>🎚️ Modifier un Fichier Audio</h3>
-    <form id="process-audio-form" method="POST" enctype="multipart/form-data" action="/process_audio">
-        <div class="file-upload-container">
-            <label for="file1" class="file-label">📁 Choisir un fichier</label>
-            <input type="file" id="file1" name="file" accept="audio/wav" required>
+        <!-- Génération d'une mélodie (artistique et douce) -->
+        <div class="audio-section generate">
+            <h3>🎼 Générer une Mélodie Aléatoire</h3>
+            <button id="generate-audio-btn">🎶 Générer</button>
+            <audio id="generated-audio" controls style="display: none; margin-top: 10px;"></audio>
         </div>
-        <label for="speed">Vitesse :</label>
-        <input type="range" name="speed" id="speed" min="0.5" max="2" step="0.1" value="1">
-        <button type="submit">Modifier</button>
-    </form>
-</div>
 
-<!-- Fusion de deux fichiers audio -->
-<div class="audio-section merge">
-    <h3>🔄 Fusionner Deux Audios</h3>
-    <form id="merge-audio-form" method="POST" enctype="multipart/form-data" action="/merge_audio">
-        <div class="file-upload-container">
-            <label for="file2" class="file-label">📁 Choisir le premier fichier</label>
-            <input type="file" id="file2" name="file1" accept="audio/wav" required>
-            <label for="file3" class="file-label">📁 Choisir le deuxième fichier</label>
-            <input type="file" id="file3" name="file2" accept="audio/wav" required>
+        <!-- Modification d'un fichier audio : Vitesse (champ numérique) -->
+        <div class="audio-section process">
+            <h3>🎚️ Modifier un Fichier Audio</h3>
+            <form id="process-audio-form" method="POST" enctype="multipart/form-data" action="/process_audio">
+                <div class="file-upload-container">
+                    <label for="file1" class="file-label">📁 Choisir un fichier (WAV ou MP3)</label>
+                    <input type="file" id="file1" name="file" accept="audio/*" required>
+                </div>
+                <label for="speed">Vitesse :</label>
+                <!-- Input numérique -->
+                <input type="number" name="speed" id="speed" min="0.1" step="0.1" value="1" required>
+                <button type="submit">Modifier</button>
+            </form>
         </div>
-        <button type="submit">Fusionner</button>
-    </form>
-</div>
+
+        <!-- Fusion de deux fichiers audio -->
+        <div class="audio-section merge">
+            <h3>🔄 Fusionner Deux Audios</h3>
+            <form id="merge-audio-form" method="POST" enctype="multipart/form-data" action="/merge_audio">
+                <div class="file-upload-container">
+                    <label for="file2" class="file-label">📁 Choisir le premier fichier (WAV ou MP3)</label>
+                    <input type="file" id="file2" name="file1" accept="audio/*" required>
+                    <label for="file3" class="file-label">📁 Choisir le deuxième fichier (WAV ou MP3)</label>
+                    <input type="file" id="file3" name="file2" accept="audio/*" required>
+                </div>
+                <button type="submit">Fusionner</button>
+            </form>
+        </div>
+
+        <!-- Application de filtres audio (nouvelle route: /apply_audio_filter) -->
+        <div class="audio-section filter">
+            <h3>✨ Appliquer un Filtre Audio</h3>
+            <form id="filter-audio-form" method="POST" enctype="multipart/form-data" action="/apply_audio_filter">
+                <div class="file-upload-container">
+                    <label for="file-filter" class="file-label">📁 Choisir un fichier (WAV ou MP3)</label>
+                    <input type="file" id="file-filter" name="file" accept="audio/*" required>
+                </div>
+
+                <label for="filterType">Filtre :</label>
+                <select id="filterType" name="filterType" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="1">Filtre 1 : Low-pass doux</option>
+                    <option value="2">Filtre 2 : High-pass léger</option>
+                    <option value="3">Filtre 3 : Echo</option>
+                    <option value="4">Filtre 4 : Reverb</option>
+                    <option value="5">Filtre 5 : Overdrive léger</option>
+                    <option value="6">Filtre 6 : Distorsion</option>
+                    <option value="7">Filtre 7 : Chorus (simulé)</option>
+                    <option value="8">Filtre 8 : Phaser (simulé)</option>
+                    <option value="9">Filtre 9 : Robotize (pitch shift)</option>
+                    <option value="10">Filtre 10 : Compresseur (simulé)</option>
+                    <!-- Ajoutez Filtre 11 (Autotune) si vous l'avez implémenté -->
+                </select>
+                <button type="submit">Appliquer</button>
+            </form>
+        </div>
 
     </div>
 </div>
