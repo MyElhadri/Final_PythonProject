@@ -3,20 +3,20 @@
 
 {% block content %}
 
-<!-- 🌊 Conteneur Principal -->
+<!-- 🌊 Main Container -->
 <div class="outer-visualization-container">
 
-  <!-- 📌 Titre Principal -->
+  <!-- 📌 Main Title -->
   <h1 class="artistic-heading">🌍 Dynamic Data Insights</h1>
 
-  <!-- 🎭 Citation Aléatoire -->
+  <!-- 🎭 Random Statement -->
   {% if statement %}
     <h2 class="random-statement">🎭 {{ statement }}</h2>
   {% endif %}
 
-  <!-- 📊 Wrapper pour centrer les 2 tableaux -->
+  <!-- 📊 Wrapper to Center Both Tables -->
   <div class="tables-wrapper">
-      <!-- 📊 Tableau des Données -->
+      <!-- 📊 Data Table -->
       <div class="table-container">
           <h2 class="section-heading">📊 Data Snapshot</h2>
           <table class="data-table">
@@ -24,7 +24,7 @@
           </table>
       </div>
 
-      <!-- 📈 Tableau des Statistiques -->
+      <!-- 📈 Statistics Table -->
       <div class="stats-container">
           <h2 class="section-heading">📈 Data Analysis</h2>
           <div class="table-container stats-table">
@@ -33,7 +33,7 @@
               </table>
           </div>
       </div>
-  </div> <!-- ✅ Fin du wrapper des tableaux -->
+  </div> <!-- ✅ End of Table Wrapper -->
 
   <!-- 🎨 Buttons to Generate Different Charts -->
   <div class="chart-buttons">
@@ -62,7 +62,7 @@
     </form>
   </div>
 
-  <!-- 🌀 Graphique Généré -->
+  <!-- 🌀 Generated Chart -->
   {% if chart_url %}
   <h2 class="section-heading">📊 Visual Representation</h2>
   <div class="chart-container">

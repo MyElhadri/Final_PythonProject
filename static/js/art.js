@@ -1,6 +1,6 @@
-// 🎨 art.js - Amélioration de l'expérience utilisateur
+// 🎨 art.js - Enhancing User Experience
 
-// Fonction pour afficher/masquer la pipette avec animation
+// Function to show/hide the color picker with animation
 function toggleColorPicker() {
     var colorScheme = document.getElementById("color_scheme");
     var colorPicker = document.getElementById("custom_color");
@@ -8,34 +8,34 @@ function toggleColorPicker() {
     if (colorScheme.value === "custom") {
         colorPicker.style.display = "block";
         colorPicker.style.opacity = "0";
-        setTimeout(() => { colorPicker.style.opacity = "1"; }, 200); // Animation douce
+        setTimeout(() => { colorPicker.style.opacity = "1"; }, 200); // Smooth animation
         colorPicker.required = true;
     } else {
         colorPicker.style.opacity = "0";
-        setTimeout(() => { colorPicker.style.display = "none"; }, 300); // Disparition douce
+        setTimeout(() => { colorPicker.style.display = "none"; }, 300); // Smooth disappearance
         colorPicker.required = false;
     }
 }
 
-// Fonction pour gérer la soumission du formulaire sans confirmation
+// Function to handle form submission without confirmation
 function handleFormSubmit(event) {
     var colorScheme = document.getElementById("color_scheme").value;
     var colorPicker = document.getElementById("custom_color");
 
-    // Vérifier si une couleur personnalisée est choisie mais non sélectionnée
+    // Check if a custom color is selected but not chosen
     if (colorScheme === "custom" && !colorPicker.value) {
-        alert("🎨 Veuillez choisir une couleur personnalisée !");
-        event.preventDefault(); // Empêcher la soumission
+        alert("🎨 Please select a custom color!");
+        event.preventDefault(); // Prevent form submission
     }
 }
 
-// Exécuter au chargement pour définir l'état initial et lier les événements
+// Execute on load to set the initial state and bind events
 document.addEventListener("DOMContentLoaded", function () {
-    toggleColorPicker(); // Appliquer la bonne visibilité au démarrage
+    toggleColorPicker(); // Apply correct visibility on startup
 
-    // Écouteur d'événement pour le changement du sélecteur de palette de couleurs
+    // Event listener for the color palette selector change
     document.getElementById("color_scheme").addEventListener("change", toggleColorPicker);
 
-    // Suppression de la confirmation avant génération
+    // Remove confirmation before generating
     document.querySelector(".art-form").addEventListener("submit", handleFormSubmit);
 });

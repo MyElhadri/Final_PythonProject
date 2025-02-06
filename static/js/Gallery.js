@@ -2,19 +2,23 @@ class GalleryApp {
     constructor() {
         this.initializeEventListeners();
     }
+
     initializeEventListeners() {
         const sortSelect = document.getElementById('sortSelect');
         if (sortSelect) {
             sortSelect.addEventListener('change', (e) => this.handleSort(e));
         }
+
         document.querySelectorAll('.artwork-image').forEach(img => {
             img.addEventListener('click', () => this.openModal(img.src));
         });
+
         const modal = document.getElementById('imageModal');
         if (modal) {
             modal.querySelector('.modal-close').addEventListener('click', () => {
                 modal.style.display = 'none';
             });
+
             window.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
@@ -22,12 +26,14 @@ class GalleryApp {
             });
         }
     }
+
     openModal(src) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         modal.style.display = 'block';
         modalImg.src = src;
     }
+
     handleSort(e) {
         const gallery = document.querySelector('.gallery-grid');
         const artworks = Array.from(gallery.children);
@@ -39,6 +45,7 @@ class GalleryApp {
         artworks.forEach(artwork => gallery.appendChild(artwork));
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     new GalleryApp();
 });

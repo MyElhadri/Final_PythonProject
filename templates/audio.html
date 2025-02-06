@@ -1,83 +1,88 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="outer-audio-container">
-    <h2>🎵 Gestion des Audios 🎵</h2>
+    <h2>🎵 Audio Management 🎵</h2>
 
-    <!-- Quatre boutons d'actions -->
+    <!-- Four action buttons -->
     <div class="button-container">
-        <button id="btn-generate">🎼 Générer une Mélodie</button>
-        <button id="btn-process">🎚️ Modifier un Audio</button>
-        <button id="btn-merge">🔄 Fusionner Deux Audios</button>
-        <button id="btn-filter">✨ Appliquer un Filtre</button>
+        <button id="btn-generate">🎼 Generate a Melody</button>
+        <button id="btn-process">🎚️ Modify an Audio</button>
+        <button id="btn-merge">🔄 Merge Two Audios</button>
+        <button id="btn-filter">✨ Apply a Filter</button>
     </div>
 
     <div class="audio-container">
-        <!-- 1) GÉNÉRATION D'UNE MÉLODIE -->
+        <!-- 1) GENERATE A MELODY -->
         <div class="audio-section generate" style="display: none;">
-            <h3>🎼 Générer une Mélodie Aléatoire</h3>
-            <button id="generate-audio-btn">🎶 Générer</button>
+            <h3>🎼 Generate a Random Melody</h3>
+            <button id="generate-audio-btn">🎶 Generate</button>
             <audio id="generated-audio" controls style="display: none; margin-top: 10px;"></audio>
         </div>
 
-        <!-- 2) MODIFICATION D'UN FICHIER AUDIO (CHANGER VITESSE) -->
+        <!-- 2) MODIFY AN AUDIO FILE (CHANGE SPEED) -->
         <div class="audio-section process" style="display: none;">
-            <h3>🎚️ Modifier un Fichier Audio</h3>
+            <h3>🎚️ Modify an Audio File</h3>
             <form id="process-audio-form" enctype="multipart/form-data">
-                <!-- Label SANS for="file1" -->
-                <label id="label-file1" class="file-label">📁 Choisir un fichier</label>
+                <label id="label-file1" class="file-label">📁 Choose a file</label>
                 <input type="file" id="file1" name="file" accept="audio/*" hidden>
-                <span id="file-name1" class="file-name">Aucun fichier sélectionné</span>
+                <span id="file-name1" class="file-name">No file selected</span>
                 <audio id="preview-audio1" controls style="display: none; margin-top: 10px;"></audio>
 
-                <label for="speed">Vitesse :</label>
+                <label for="speed">Speed:</label>
                 <input type="number" name="speed" id="speed" min="0.1" step="0.1" value="1">
-                <button type="submit">Modifier</button>
+                <button type="submit">Modify</button>
             </form>
         </div>
 
-        <!-- 3) FUSION DE DEUX FICHIERS AUDIO -->
+        <!-- 3) MERGE TWO AUDIO FILES -->
         <div class="audio-section merge" style="display: none;">
-            <h3>🔄 Fusionner Deux Audios</h3>
+            <h3>🔄 Merge Two Audios</h3>
             <form id="merge-audio-form" enctype="multipart/form-data">
-                <label id="label-file2" class="file-label">📁 Premier fichier</label>
+                <label id="label-file2" class="file-label">📁 First file</label>
                 <input type="file" id="file2" name="file1" accept="audio/*" hidden>
-                <span id="file-name2" class="file-name">Aucun fichier sélectionné</span>
+                <span id="file-name2" class="file-name">No file selected</span>
                 <audio id="preview-audio2" controls style="display: none; margin-top: 10px;"></audio>
 
-                <label id="label-file3" class="file-label">📁 Deuxième fichier</label>
+                <label id="label-file3" class="file-label">📁 Second file</label>
                 <input type="file" id="file3" name="file2" accept="audio/*" hidden>
-                <span id="file-name3" class="file-name">Aucun fichier sélectionné</span>
+                <span id="file-name3" class="file-name">No file selected</span>
                 <audio id="preview-audio3" controls style="display: none; margin-top: 10px;"></audio>
 
-                <button type="submit">Fusionner</button>
+                <button type="submit">Merge</button>
             </form>
         </div>
 
-        <!-- 4) APPLICATION DE FILTRES AUDIO -->
+        <!-- 4) APPLY AUDIO FILTERS -->
         <div class="audio-section filter" style="display: none;">
-            <h3>✨ Appliquer un Filtre Audio</h3>
+            <h3>✨ Apply an Audio Filter</h3>
             <form id="filter-audio-form" enctype="multipart/form-data">
-                <label id="label-file-filter" class="file-label">📁 Choisir un fichier</label>
+                <label id="label-file-filter" class="file-label">📁 Choose a file</label>
                 <input type="file" id="file-filter" name="file" accept="audio/*" hidden>
-                <span id="file-name4" class="file-name">Aucun fichier sélectionné</span>
+                <span id="file-name4" class="file-name">No file selected</span>
                 <audio id="preview-audio4" controls style="display: none; margin-top: 10px;"></audio>
 
-                <label for="filterType">Filtre :</label>
+                <label for="filterType">Filter:</label>
                 <select id="filterType" name="filterType">
-                    <option value="">-- Sélectionnez --</option>
-                    <option value="1">Low-pass doux</option>
-                    <option value="2">High-pass léger</option>
+                    <option value="">-- Select --</option>
+                    <option value="1">Soft Low-pass</option>
+                    <option value="2">Light High-pass</option>
                     <option value="3">Echo</option>
                     <option value="4">Reverb</option>
                     <option value="5">Overdrive</option>
-                    <option value="6">Distorsion</option>
+                    <option value="6">Distortion</option>
                     <option value="7">Chorus</option>
                     <option value="8">Phaser</option>
                     <option value="9">Robotize</option>
-                    <option value="10">Compresseur</option>
+                    <option value="10">Compressor</option>
                 </select>
-                <button type="submit">Appliquer</button>
+                <button type="submit">Apply</button>
             </form>
+
+            <!-- New Download Button (Initially Hidden) -->
+            <a id="download-filtered-audio" href="#" download="filtered_audio.wav"
+               class="btn download-btn" style="display: none; margin-top: 10px;">
+                ⬇️ Download Filtered Audio
+            </a>
         </div>
     </div>
 </div>

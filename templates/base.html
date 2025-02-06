@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Galerie Générative</title>
+    <title>Generative Gallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/art.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_art.css') }}">
@@ -45,16 +45,15 @@
 </head>
 <body>
 <nav>
-    <a href="{{ url_for('home') }}">Accueil</a> |
+    <a href="{{ url_for('home') }}">Home</a> |
     <a href="{{ url_for('art') }}">Art</a> |
-    <a href="{{ url_for('data_visualization') }}">Visualisation</a> |
+    <a href="{{ url_for('data_visualization') }}">Visualization</a> |
     <a href="{{ url_for('audio_page') }}">Audio</a> |
     <a href="{{ url_for('image_page') }}">Image</a> |
     <a href="{{ url_for('draw_page') }}">Draw</a> |
     <a href="{{ url_for('gallery_page') }}">Gallery</a> |
     <a href="{{ url_for('text_gen') }}">Text Generation</a> |
-<a href="{{ url_for('style_transfer.style_transfer') }}">Style Transfer</a>
-
+    <a href="{{ url_for('style_transfer.style_transfer') }}">Style Transfer</a>
 </nav>
 
 <hr>

@@ -1,52 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="outer-image-container">
-    <h2>📷 Modifier votre image avec des effets artistiques</h2>
+    <h2>📷 Edit Your Image with Artistic Effects</h2>
 
     <div class="image-container">
         <div class="image-section">
-            <h3>🖼️ Sélectionnez un effet</h3>
+            <h3>🖼️ Select an Effect</h3>
             <form id="uploadForm" enctype="multipart/form-data">
-                <label for="image" class="file-label">📁 Choisissez une image</label>
+                <label for="image" class="file-label">📁 Choose an Image</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
 
-                <label for="filter">🎨 Appliquez un effet :</label>
+                <label for="filter">🎨 Apply an Effect:</label>
                 <div class="select-container">
                     <select id="filter" name="filter">
-                        <option value="grayscale">Noir & Blanc</option>
-                        <option value="sepia">Sépia</option>
-                        <option value="invert">Inversion</option>
-                        <option value="blur">Flou</option>
+                        <option value="grayscale">Black & White</option>
+                        <option value="sepia">Sepia</option>
+                        <option value="invert">Invert</option>
+                        <option value="blur">Blur</option>
                         <option value="glitch">Glitch</option>
-                        <option value="oil_painting">Peinture à l'huile</option>
-                        <option value="sketch">Dessin au crayon</option>
-                        <option value="neon_glow">Éclat Néon</option>
-                        <option value="dreamy_blur">Flou de rêve</option>
-                        <option value="pastel">Effet pastel</option>
-                        <option value="mosaic">Mosaïque</option>
-                        <option value="halftone">Demi-teinte</option>
-                        <option value="cartoon">Dessin animé</option>
+                        <option value="oil_painting">Oil Painting</option>
+                        <option value="sketch">Pencil Sketch</option>
+                        <option value="neon_glow">Neon Glow</option>
+                        <option value="dreamy_blur">Dreamy Blur</option>
+                        <option value="pastel">Pastel Effect</option>
+                        <option value="mosaic">Mosaic</option>
+                        <option value="halftone">Halftone</option>
+                        <option value="cartoon">Cartoon</option>
                         <option value="pop_art">Pop Art</option>
                         <option value="vintage">Vintage</option>
                     </select>
                 </div>
 
-                <button type="submit">✨ Appliquer l'effet</button>
+                <button type="submit">✨ Apply Effect</button>
             </form>
 
             <div id="previewResultContainer">
                 <div class="image-box">
-                    <h4>Avant</h4>
-                    <img id="imagePreview" src="#" alt="Aperçu" style="display: none;">
+                    <h4>Before</h4>
+                    <img id="imagePreview" src="#" alt="Preview" style="display: none;">
                 </div>
                 <div class="image-box">
-                    <h4>Après</h4>
-                    <img id="processedImage" src="#" alt="Image traitée" style="display: none;">
+                    <h4>After</h4>
+                    <img id="processedImage" src="#" alt="Processed Image" style="display: none;">
                 </div>
             </div>
 
             <a id="downloadBtn" href="#" download="filtered_image.png" class="download-btn" style="display: none;">
-                ⬇️ Télécharger l'image
+                ⬇️ Download Image
             </a>
         </div>
     </div>

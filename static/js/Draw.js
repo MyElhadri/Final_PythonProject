@@ -6,12 +6,14 @@ class DrawingApp {
         this.initializeEventListeners();
         this.initializeTools();
     }
+
     initializeEventListeners() {
         this.canvas.addEventListener('mousedown', (e) => this.startDrawing(e));
         this.canvas.addEventListener('mousemove', (e) => this.draw(e));
         this.canvas.addEventListener('mouseup', () => this.stopDrawing());
         this.canvas.addEventListener('mouseout', () => this.stopDrawing());
     }
+
     initializeTools() {
         document.querySelectorAll('.tool-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -20,8 +22,10 @@ class DrawingApp {
                 btn.classList.add('active');
             });
         });
+
         const colorPicker = document.getElementById('colorPicker');
         colorPicker.addEventListener('change', (e) => this.setColor(e.target.value));
+
         const sizeSlider = document.getElementById('sizeSlider');
         const sizeValue = document.getElementById('sizeValue');
         sizeSlider.addEventListener('input', (e) => {
@@ -29,30 +33,36 @@ class DrawingApp {
             sizeValue.textContent = `${size}px`;
             this.setSize(size);
         });
+
         document.getElementById('undoBtn').addEventListener('click', () => this.undo());
         document.getElementById('clearBtn').addEventListener('click', () => this.clear());
         document.getElementById('saveBtn').addEventListener('click', () => this.save());
     }
+
     getMousePos(e) {
         const rect = this.canvas.getBoundingClientRect();
         return [e.clientX - rect.left, e.clientY - rect.top];
     }
+
     async startDrawing(e) {
         this.isDrawing = true;
         const pos = this.getMousePos(e);
         await this.sendDrawEvent('mousedown', pos);
     }
+
     async draw(e) {
         if (!this.isDrawing) return;
         const pos = this.getMousePos(e);
         await this.sendDrawEvent('mousemove', pos);
     }
+
     async stopDrawing() {
         if (this.isDrawing) {
             this.isDrawing = false;
             await this.sendDrawEvent('mouseup', [0, 0]);
         }
     }
+
     async sendDrawEvent(type, pos) {
         try {
             const response = await fetch('/api/draw', {
@@ -66,6 +76,7 @@ class DrawingApp {
             console.error('Error:', error);
         }
     }
+
     updateCanvas(imageData) {
         const img = new Image();
         img.onload = () => {
@@ -74,6 +85,7 @@ class DrawingApp {
         };
         img.src = `data:image/png;base64,${imageData}`;
     }
+
     async setTool(tool) {
         await fetch('/api/tool', {
             method: 'POST',
@@ -81,6 +93,7 @@ class DrawingApp {
             body: JSON.stringify({ tool })
         });
     }
+
     async setColor(color) {
         await fetch('/api/color', {
             method: 'POST',
@@ -88,6 +101,7 @@ class DrawingApp {
             body: JSON.stringify({ color })
         });
     }
+
     async setSize(size) {
         await fetch('/api/size', {
             method: 'POST',
@@ -95,12 +109,15 @@ class DrawingApp {
             body: JSON.stringify({ size })
         });
     }
+
     async undo() {
         await this.sendDrawEvent('undo', [0, 0]);
     }
+
     async clear() {
         await this.sendDrawEvent('clear', [0, 0]);
     }
+
     async save() {
         try {
             const response = await fetch('/api/save', { method: 'POST' });
@@ -114,6 +131,7 @@ class DrawingApp {
         }
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     new DrawingApp();
 });

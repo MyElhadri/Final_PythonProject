@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.error) {
-        resultContainer.innerHTML = `<p style="color:red;">Erreur: ${data.error}</p>`;
+        resultContainer.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
       } else {
         resultContainer.innerHTML = `
-          <h4>Résultat :</h4>
+          <h4>Result:</h4>
           <p>${data.generated_text}</p>
         `;
       }
     })
     .catch((err) => {
-      console.error("Erreur AJAX:", err);
-      resultContainer.innerHTML = `<p style="color:red;">Une erreur est survenue.</p>`;
+      console.error("AJAX Error:", err);
+      resultContainer.innerHTML = `<p style="color:red;">An error occurred.</p>`;
     });
   });
 });

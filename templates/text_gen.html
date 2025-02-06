@@ -2,17 +2,17 @@
 
 {% block content %}
 <div class="outer-textgen-container">
-    <h2>📝 Génération de Texte (Markov / GPT-2)</h2>
+    <h2>📝 Text Generation (Markov / GPT-2)</h2>
 
     <div class="textgen-container">
         <div class="textgen-section">
-            <h3>Générez du texte</h3>
+            <h3>Generate Text</h3>
 
-            <!-- Formulaire POST vers /text_gen -->
+            <!-- POST Form to /text_gen -->
             <form method="POST" action="{{ url_for('text_gen') }}">
 
-                <!-- Sélecteur du modèle -->
-                <label for="model_choice">Choisissez un modèle :</label>
+                <!-- Model selection -->
+                <label for="model_choice">Choose a model:</label>
                 <div class="select-container">
                     <select id="model_choice" name="model_choice">
                         <option value="markov"
@@ -26,28 +26,28 @@
                     </select>
                 </div>
 
-                <!-- Champ pour saisir le corpus ou le prompt -->
-                <label for="corpus_text">Corpus (Markov) ou Prompt (GPT-2) :</label>
+                <!-- Input field for corpus or prompt -->
+                <label for="corpus_text">Corpus (Markov) or Prompt (GPT-2):</label>
                 <div class="textarea-container">
                     <textarea id="corpus_text" name="corpus_text" rows="4"
-                              placeholder="✍️ Tapez votre texte ici..."></textarea>
+                              placeholder="✍️ Type your text here..."></textarea>
                 </div>
 
-                <!-- Sélecteur du nombre de phrases -->
-                <label for="nb_sentences">Nombre de phrases (Markov) :</label>
+                <!-- Sentence count selector -->
+                <label for="nb_sentences">Number of sentences (Markov):</label>
                 <div class="number-container">
                     <input type="number" id="nb_sentences" name="nb_sentences"
                            value="3" min="1" max="10">
                 </div>
 
-                <!-- Bouton de génération -->
-                <button type="submit" class="generate-btn">🚀 Générer le Texte</button>
+                <!-- Generate button -->
+                <button type="submit" class="generate-btn">🚀 Generate Text</button>
             </form>
 
-            <!-- Affichage du résultat si "generated_text" existe -->
+            <!-- Display the result if "generated_text" exists -->
             {% if generated_text %}
               <div id="generatedResult">
-                  <h4>📜 Résultat :</h4>
+                  <h4>📜 Result:</h4>
                   <p>{{ generated_text }}</p>
               </div>
             {% endif %}

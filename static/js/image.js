@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const downloadBtn = document.getElementById("downloadBtn");
     const previewResultContainer = document.getElementById("previewResultContainer");
 
-    // Fonction d'affichage de l'aperçu
+    // Function to display the image preview
     imageInput.addEventListener("change", function () {
         const file = this.files[0];
 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Envoi et affichage du traitement
+    // Sending the image and displaying the processed result
     uploadForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.error) {
-                alert("❌ Erreur : " + data.error);
+                alert("❌ Error: " + data.error);
             } else {
                 const processedFilename = data.filename;
                 const imageUrl = `/static/images/${processedFilename}?t=${Date.now()}`;
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         .catch(error => {
-            console.error("Erreur AJAX:", error);
-            alert("Une erreur est survenue lors du traitement de l'image.");
+            console.error("AJAX Error:", error);
+            alert("An error occurred while processing the image.");
         });
     });
 });

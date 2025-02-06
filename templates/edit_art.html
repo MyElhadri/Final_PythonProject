@@ -1,68 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Conteneur extérieur pour un fond dégradé, similaire aux autres pages -->
+<!-- Outer container for a gradient background, similar to other pages -->
 <div class="outer-editart-container">
-    <h2>Modification de l'Art : {{ filename }}</h2>
+    <h2>Edit Art: {{ filename }}</h2>
 
-    <!-- “Carte” blanche centrale avec fadeInUp -->
+    <!-- Central “Card” with fadeInUp -->
     <div class="edit-art-container">
-        <!-- Aperçu de l'image -->
+        <!-- Image preview -->
         <img
             class="art-preview"
             src="{{ url_for('static', filename='art/' ~ filename) }}"
-            alt="Image Art"
+            alt="Art Image"
         />
 
-        <!-- BOUTON POUR TÉLÉCHARGER l'image -->
+        <!-- BUTTON TO DOWNLOAD the image -->
         <a
           href="{{ url_for('download_art', filename=filename) }}"
           class="btn download-btn"
           style="margin-top: 10px;"
         >
-          ⬇️ Télécharger l'Image Modifiée
+          ⬇️ Download Edited Image
         </a>
 
         <hr>
 
-        <!-- Formulaire 1 : Ajouter une forme -->
+        <!-- Form 1: Add a shape -->
         <form method="POST" class="modification-form">
             <input type="hidden" name="action" value="add_shape">
-            <h3>Ajouter une Forme</h3>
-            <label>Type :</label>
+            <h3>Add a Shape</h3>
+            <label>Type:</label>
             <select name="shape_type">
-                <option value="circle">Cercle</option>
+                <option value="circle">Circle</option>
                 <option value="rectangle">Rectangle</option>
                 <option value="triangle">Triangle</option>
-                <option value="star">Étoile</option>
-                <option value="hexagon">Hexagone</option>
+                <option value="star">Star</option>
+                <option value="hexagon">Hexagon</option>
             </select>
 
-            <label>Couleur :</label>
+            <label>Color:</label>
             <input type="color" name="shape_color" value="#ff0000">
-            <button type="submit">Ajouter</button>
+            <button type="submit">Add</button>
         </form>
 
         <hr>
 
-        <!-- Formulaire 2 : Changer la couleur de la dernière forme -->
+        <!-- Form 2: Change the color of the last shape -->
         <form method="POST" class="modification-form">
             <input type="hidden" name="action" value="change_color">
-            <h3>Changer la Couleur de la Dernière Forme</h3>
-            <label>Nouvelle Couleur :</label>
+            <h3>Change the Color of the Last Shape</h3>
+            <label>New Color:</label>
             <input type="color" name="new_color" value="#0000ff">
-            <button type="submit">Changer</button>
+            <button type="submit">Change</button>
         </form>
 
         <hr>
 
-        <!-- Formulaire 3 : Déplacer la dernière forme -->
+        <!-- Form 3: Move the last shape -->
         <form method="POST" class="modification-form">
             <input type="hidden" name="action" value="move_shape">
-            <h3>Déplacer la Dernière Forme</h3>
-            <button type="submit">Déplacer</button>
+            <h3>Move the Last Shape</h3>
+            <button type="submit">Move</button>
         </form>
-    </div> <!-- Fin du .edit-art-container -->
-</div> <!-- Fin du .outer-editart-container -->
+    </div> <!-- End of .edit-art-container -->
+</div> <!-- End of .outer-editart-container -->
 
 {% endblock %}

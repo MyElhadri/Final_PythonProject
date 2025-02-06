@@ -1,15 +1,14 @@
 // 📊 visualization.js
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    // Appliquer un effet d'apparition aux lignes du tableau
+    // Apply a fade-in effect to table rows
     const rows = document.querySelectorAll(".data-table tr");
     rows.forEach((row, index) => {
         row.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.1}s forwards`;
         row.style.opacity = "0";
     });
 
-    // Effet d'animation sur l'image du graphique
+    // Hover animation effect on the chart image
     const chartImage = document.querySelector(".chart-container img");
     if (chartImage) {
         chartImage.addEventListener("mouseenter", function () {
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🎨 Animation d'apparition des tableaux
+// 🎨 Fade-in animation for tables
 const style = document.createElement("style");
 style.innerHTML = `
 @keyframes fadeIn {
